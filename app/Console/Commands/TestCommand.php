@@ -37,6 +37,6 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        echo "Això és un test";
+        dump("Això és un test");
     }
 }
