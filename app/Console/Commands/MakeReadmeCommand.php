@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use App\Services\MakeReadmeCommand as MakeReadmeCommandService;
+
 class MakeReadmeCommand extends Command
 {
     /**
@@ -19,15 +21,17 @@ class MakeReadmeCommand extends Command
      * @var string
      */
     protected $description = 'Creates a MYREADME.md';
+    protected $service;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MakeReadmeCommandService $service)
     {
         parent::__construct();
+        $this->service = $service;
     }
 
     /**
@@ -37,6 +41,6 @@ class MakeReadmeCommand extends Command
      */
     public function handle()
     {
-        $this->filesystem->createReadme();
+        $this->service->create();
     }
 }
