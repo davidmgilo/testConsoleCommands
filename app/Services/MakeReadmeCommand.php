@@ -9,26 +9,39 @@
 namespace App\Services;
 
 
+use App\Compiler\StubFileCompiler;
 use Illuminate\Filesystem\Filesystem;
 
+/**
+ * Class MakeReadmeCommand
+ * @package App\Services
+ */
 class MakeReadmeCommand
 {
     protected $filesystem;
+    protected $compiler;
 
     /**
      * MakeReadmeCommand constructor.
      * @param $filesystem
      */
-    public function __construct(Filesystem $filesystem)
+    public function __construct(Filesystem $filesystem, StubFileCompiler $compiler)
     {
         $this->filesystem = $filesystem;
+        $this->compiler = $compiler;
     }
 
 
-    public function create()
+    /**
+     * @param $title
+     */
+    public function create($title)
     {
         //dump("file readme created");
         //copy stub to /
-        $this->filesystem->copy(__DIR__ . '/stubs/MyReadme.md', base_path('MyReadme.md'));
+
+        $file = $this->compiler->compile(__DIR__ . '/stubs/MyReadme.md',['title'=> $title]);
+
+        $this->filesystem->copy($file, base_path('MyReadme.md'));
     }
 }

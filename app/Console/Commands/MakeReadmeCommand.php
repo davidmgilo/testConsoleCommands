@@ -13,7 +13,7 @@ class MakeReadmeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:readme';
+    protected $signature = 'make:readme {title : The readme title}';
 
     /**
      * The console command description.
@@ -41,7 +41,7 @@ class MakeReadmeCommand extends Command
      */
     public function handle()
     {
-        $this->service->create();
+        $this->service->create($this->argument('title'));
         $this->info("File MyReadme.md created successfully");
     }
 }

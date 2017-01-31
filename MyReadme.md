@@ -1,4 +1,4 @@
-# $title$
+# Title
 
 Bla bla bla
 
