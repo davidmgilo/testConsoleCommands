@@ -27,8 +27,8 @@ class MakeReadmeCommand
 
     public function create()
     {
-        dump("file readme created");
+        //dump("file readme created");
         //copy stub to /
-        $this->filesystem->copy(__DIR__ . '/stubs/MyReadme.md','../../MyReadme.md');
+        $this->filesystem->copy(__DIR__ . '/stubs/MyReadme.md', base_path('MyReadme.md'));
     }
 }

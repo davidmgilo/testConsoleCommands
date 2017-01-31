@@ -42,5 +42,6 @@ class MakeReadmeCommand extends Command
     public function handle()
     {
         $this->service->create();
+        $this->info("File MyReadme.md created successfully");
     }
 }
